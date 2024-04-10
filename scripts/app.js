@@ -9,7 +9,6 @@ for (const seatNumber of seatNumbers) {
         selectSeat(seatID);
         seatLeft(seatSelected);
         seatCount(seatSelectedCount);
-        appendSelectedSeat(seatID);
         totalPrice(seatSelectedCount);
     });
 }
@@ -19,6 +18,7 @@ function selectSeat(elementID) {
     seatNumberElement.style.backgroundColor = "#1DD100";
     seatNumberElement.style.color = "white";
     seatNumberElement.setAttribute("disabled","");
+    appendSelectedSeat(elementID);
 }
 function seatLeft(selectedSeat){
     const seatLeftElement=document.getElementById('seatLeft');
