@@ -73,14 +73,14 @@
         <!-- Banner Section -->
         <section>
             <div
-                class="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.0),rgba(0,0,0,0.4)),url('/images/banner.png')] min-h-[550px] bg-no-repeat bg-cover rounded-3xl bg-center mt-6">
-                <h2 class="text-white text-6xl font-extrabold text-center pt-16">End-to-End Travel with</h2>
-                <h2 class="text-[#1DD100] text-6xl font-extrabold text-center mt-8">P Paribahan</h2>
-                <p class="text-center text-white inter-fonts text-xl w-10/12 md:w-7/12  lg:w-7/12 mx-auto mt-8">Yes,
+                class="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.0),rgba(0,0,0,0.4)),url('images/banner.png')] min-h-[550px] bg-no-repeat bg-cover rounded-3xl bg-center space-y-8 pt-20">
+                <h2 class="text-white text-6xl font-extrabold text-center">End-to-End Travel with</h2>
+                <h2 class="text-[#1DD100] text-6xl font-extrabold text-center ">P Paribahan</h2>
+                <p class="text-center text-white inter-fonts text-xl w-10/12 md:w-7/12  lg:w-7/12 mx-auto">Yes,
                     you can run unit tests and view the results directly within the app. The integrated testing features
                     allow for a streamlined .</p>
                 <div class="flex justify-center items-center mt-8">
-                    <a class="btn text-xl bg-[#1DD100] border-[#1DD100] px-7 py-5 w-56 h-20 font-bold"
+                    <a class="btn text-xl bg-[#1DD100] border-[#1DD100] px-7 py-4 w-56 h-16 font-bold"
                         href="#paribahanSection">Buy Tickets</a>
                 </div>
 
@@ -207,7 +207,7 @@
                 </div>
                 <div class="flex flex-col justify-center items-center px-16">
                     <img src="images/fare.png" alt="">
-                    <p class="text-3xl font-bold">550 Taka</p>
+                    <p class="text-3xl font-bold"><span id="seatPrice">550</span> Taka</p>
                     <p class="text-[#03071299] text-2xl">Per Seat</p>
                 </div>
             </div>
@@ -435,12 +435,6 @@
                                         id="totalPrice">0</span></p>
                             </div>
                         </div>
-                        <div class="flex justify-center items-center gap-2">
-                            <input class="w-64 h-14 p-4 rounded-lg" type="text" name="" id="inputCuponCode"
-                                placeholder="Have any copupon?">
-                            <button id="applyBtn" onclick="grandTotal()"
-                                class="btn bg-[#1DD100] h-10 w-20  p-4 text-white right-20">Apply</button>
-                        </div>
                         <div id="discounDisplay" class="flex justify-between py-2 hidden">
                             <div>
                                 <p class="text-[#030712] inter-fonts ">Total Discount:</p>
@@ -450,6 +444,13 @@
                             </div>
                         </div>
                         <hr>
+                        <div id="discountSection"class="flex justify-center items-center gap-2">
+                            <input class="w-64 h-14 p-4 rounded-lg" type="text" name="" id="inputCuponCode"
+                                placeholder="Have any coupon?">
+                            <button id="applyBtn" onclick="grandTotal()"
+                                class="btn bg-[#1DD100] h-10 w-20  p-4 text-white right-20">Apply</button>
+                        </div>
+                        
                         <div class="flex justify-between py-4">
                             <div>
                                 <p class="text-[#030712] text-base inter-fonts font-medium">Grand Total: </p>
@@ -465,19 +466,18 @@
                         <form action="">
                             <br>
                             <label for="" class="text-base inter-fonts font-semibold ">Passenger Name*</label><br>
-                            <input class="min-w-full h-16 rounded-2xl border p-6 my-4" type="text" name="" id=""
+                            <input class="min-w-full h-16 rounded-2xl border p-6 my-4" type="text" name="" id="passengerName"
                                 placeholder="Enter your name"><br>
                             <label for="" class="text-base inter-fonts font-semibold">Phone Number*</label><br>
-                            <input class="min-w-full h-1>6 rounded-2xl border p-6 my-4" type="text" name="" id=""
+                            <input class="min-w-full h-1>6 rounded-2xl border p-6 my-4" type="number" name="" id="phoneNumber"
                                 placeholder="Enter your phone number">
                             <label for="" class="text-base inter-fonts font-semibold">Email ID</label><br>
-                            <input class="min-w-full h-1>6 rounded-2xl border p-6 my-4" type="text" name="" id=""
+                            <input class="min-w-full h-1>6 rounded-2xl border p-6 my-4" type="email" name="" id="emailID"
                                 placeholder="Enter your email id">
                             <!-- <button
                                 class="btn bg-[#1DD100] text-xl font-extrabold text-white min-w-full h-16 rounded-2xl">Next</button> -->
                             <!-- Open the modal using ID.showModal() method -->
-                            <!-- Open the modal using ID.showModal() method -->
-                            <button class="btn bg-[#1DD100] text-xl font-extrabold text-white min-w-full h-16 rounded-2xl" onclick="my_modal_1.showModal()">Next</button>
+                            <button id="nextBtn" class="btn bg-[#1DD100] text-xl font-extrabold text-white min-w-full h-16 rounded-2xl" onclick="my_modal_1.showModal()"disabled>Next</button>
                             <dialog id="my_modal_1" class="modal">
                                 <div class="modal-box">
                                     <p class="py-4">Press ESC key to close</p>

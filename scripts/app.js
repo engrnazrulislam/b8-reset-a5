@@ -5,13 +5,14 @@ for (const seatNumber of seatNumbers) {
     const seatID = seatNumber.innerText.toLowerCase();
     document.getElementById(seatID).addEventListener('click', function () {
         if (seatSelectedCount === 4) {
-            seatID.setAttribute("disabled", "");
+            alert("You are not able to select seat more than 04 seat!!!");
         } else {
             const seatSelected = 1;
             seatSelectedCount = seatSelectedCount + 1;
             selectSeat(seatID);
             seatLeft(seatSelected);
             seatCount(seatSelectedCount);
+            discountSectionActivation(seatSelectedCount);
             totalPrice(seatSelectedCount);
         }
     });
@@ -50,7 +51,10 @@ function appendSelectedSeat(elementID) {
 }
 function totalPrice(count) {
     const totalPriceElement = document.getElementById('totalPrice');
-    const totalPrice = count * 550;
+    const seatPriceElement = document.getElementById('seatPrice');
+    const seatPriceString = seatPriceElement.innerText;
+    const seatPrice = parseInt(seatPriceString);
+    const totalPrice = count * seatPrice;
     totalPriceElement.innerText = totalPrice;
     const grandTotalElement = document.getElementById('grandTotal');
     grandTotalElement.innerText = totalPrice;
@@ -76,14 +80,46 @@ function grandTotal() {
         discountElement.innerText = totalDiscount;
         grandTotalElement.innerText = totalPrice - totalDiscount;
         document.getElementById('discounDisplay').classList.remove('hidden');
+        document.getElementById('discountSection').classList.add('hidden');
     } else if (cuponCode === originalCuponCode2) {
         const totalDiscount = totalPrice * .20;
         const discountElement = document.getElementById('totalDiscount');
         discountElement.innerText = totalDiscount;
         grandTotalElement.innerText = totalPrice - totalDiscount;
         document.getElementById('discounDisplay').classList.remove('hidden');
+        document.getElementById('discountSection').classList.add('hidden');
     } else {
         grandTotalElement.innerText = totalPrice;
+        alert('Your cupon code is not valid');
     }
-    document.getElementById('applyBtn').setAttribute("disabled", "");
 }
+function discountSectionActivation(count) {
+    const inputCuponElement = document.getElementById('inputCuponCode');
+    const applyButtonElement = document.getElementById('applyBtn');
+    if (count < 4) {
+        inputCuponElement.setAttribute("disabled", "");
+        applyButtonElement.setAttribute("disabled", "");
+    } else {
+        inputCuponElement.removeAttribute("disabled");
+        applyButtonElement.removeAttribute("disabled");
+    }
+}
+document.getElementById('phoneNumber').addEventListener('keyup', function () {
+    const selectedSeatElement = document.getElementById('totalSelectedSeat');
+    const selectedSeatString = selectedSeatElement.innerText;
+    const selectedSeat = parseInt(selectedSeatString);
+    const mobileNumberElement = document.getElementById('phoneNumber');
+    const mobileNumber = mobileNumberElement.value;
+    if (selectedSeat && mobileNumber) {
+        document.getElementById('nextBtn').removeAttribute("disabled");
+    } else {
+        document.getElementById('nextBtn').setAttribute('disabled', '');
+    }
+});
+document.getElementById('nextBtn').addEventListener('click', function () {
+    document.getElementById('passengerName').value = "";
+    document.getElementById('phoneNumber').value = "";
+    document.getElementById('emailID').value = "";
+    document.getElementById('nextBtn').setAttribute('disabled','');
+})
+
