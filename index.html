@@ -137,7 +137,7 @@
                         <img src="images/cupon-devider.png" alt="">
                     </div>
                     <div class="flex flex-col justify-center items-center">
-                        <h2 class="text-3xl font-bold">NEW15</h2>
+                        <h2 id="cuponCode1"class="text-3xl font-bold">NEW15</h2>
                         <p class="text-xl font-medium text-[#03071266]">Coupon Code</p>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                         <img src="images/cupon-devider.png" alt="">
                     </div>
                     <div class="flex flex-col justify-center items-center">
-                        <h2 class="text-3xl font-bold">Couple 20</h2>
+                        <h2 id="cuponCode2" class="text-3xl font-bold">Couple 20</h2>
                         <p class="text-xl font-medium text-[#03071266]">Coupon Code</p>
                     </div>
                 </div>
@@ -423,20 +423,29 @@
                         <hr>
                         <div class="flex justify-between py-4">
                             <div>
-                                <p class="text-[#030712] text-base inter-fonts font-medium">Total Price</p>
+                                <p class="text-[#030712] text-base inter-fonts font-medium">Total Price:</p>
                             </div>
                             <div>
                                 <p class="text-[#030712] text-base inter-fonts font-medium">BDT <span id="totalPrice">0</span></p>
                             </div>
                         </div>
-                        <div class="flex justify-center items-center">
-                            <input class="w-80 h-14 p-4 rounded-lg" type="text" name="" id=""
+                        <div class="flex justify-center items-center gap-2">
+                            <input class="w-64 h-14 p-4 rounded-lg" type="text" name="" id="inputCuponCode"
                                 placeholder="Have any copupon?">
-                            <button class="btn bg-[#1DD100] h-10 w-20 p-4 text-white absolute right-16">Apply</button>
+                            <button id="applyBtn"onclick="grandTotal()"class="btn bg-[#1DD100] h-10 w-20  p-4 text-white right-20">Apply</button>
                         </div>
+                        <div id="discounDisplay"class="flex justify-between py-2 hidden">
+                            <div>
+                                <p class="text-[#030712] inter-fonts ">Total Discount:</p>
+                            </div>
+                            <div>
+                                <p class="text-[#030712] inter-fonts ">BDT <span id="totalDiscount">0</span></p>
+                            </div>
+                        </div>
+                        <hr>
                         <div class="flex justify-between py-4">
                             <div>
-                                <p class="text-[#030712] text-base inter-fonts font-medium">Grand Total </p>
+                                <p class="text-[#030712] text-base inter-fonts font-medium">Grand Total: </p>
                             </div>
                             <div>
                                 <p class="text-[#030712] text-base inter-fonts font-medium">BDT <span id="grandTotal">0</span></p>

@@ -11,7 +11,6 @@ for (const seatNumber of seatNumbers) {
         seatCount(seatSelectedCount);
         appendSelectedSeat(seatID);
         totalPrice(seatSelectedCount);
-        grandTotal();
     });
 }
 
@@ -19,6 +18,7 @@ function selectSeat(elementID) {
     const seatNumberElement = document.getElementById(elementID);
     seatNumberElement.style.backgroundColor = "#1DD100";
     seatNumberElement.style.color = "white";
+    seatNumberElement.setAttribute("disabled","");
 }
 function seatLeft(selectedSeat){
     const seatLeftElement=document.getElementById('seatLeft');
@@ -48,11 +48,38 @@ function totalPrice(count){
     const totalPriceElement=document.getElementById('totalPrice');
     const totalPrice=count*550;
     totalPriceElement.innerText=totalPrice;
+    const grandTotalElement=document.getElementById('grandTotal');
+    grandTotalElement.innerText=totalPrice;
 }
 function grandTotal(){
     const grandTotalElement=document.getElementById('grandTotal');
     const totalPriceElement=document.getElementById('totalPrice');
     const totalPriceString=totalPriceElement.innerText;
     const totalPrice=parseInt(totalPriceString);
-    grandTotalElement.innerText=totalPrice;
+
+    const discountElement=document.getElementById('inputCuponCode');
+    const cuponCode=discountElement.value;
+    discountElement.value="";
+
+    const originalCuponElement1=document.getElementById('cuponCode1');
+    const originalCuponCode1=originalCuponElement1.innerText;
+
+    const originalCuponEleement2=document.getElementById('cuponCode2');
+    const originalCuponCode2=originalCuponEleement2.innerText;
+    if(cuponCode===originalCuponCode1){
+        const totalDiscount=totalPrice*.15;
+        const discountElement=document.getElementById('totalDiscount');
+        discountElement.innerText=totalDiscount;
+        grandTotalElement.innerText=totalPrice-totalDiscount;
+        document.getElementById('discounDisplay').classList.remove('hidden');
+    }else if(cuponCode===originalCuponCode2){
+        const totalDiscount=totalPrice*.20;
+        const discountElement=document.getElementById('totalDiscount');
+        discountElement.innerText=totalDiscount;
+        grandTotalElement.innerText=totalPrice-totalDiscount;
+        document.getElementById('discounDisplay').classList.remove('hidden');
+    }else{
+        grandTotalElement.innerText=totalPrice;
+    }
+    document.getElementById('applyBtn').setAttribute("disabled","");
 }
