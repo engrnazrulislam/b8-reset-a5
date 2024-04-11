@@ -123,8 +123,6 @@ document.getElementById('nextBtn').addEventListener('click', function () {
     document.getElementById('phoneNumber').value = "";
     document.getElementById('emailID').value = "";
     document.getElementById('nextBtn').setAttribute('disabled','');
-    document.getElementById('inputCuponCode').setAttribute('disabled','');
-    document.getElementById('applyBtn').setAttribute('disabled','');
 
 })
 
