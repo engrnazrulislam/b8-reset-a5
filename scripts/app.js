@@ -12,8 +12,8 @@ for (const seatNumber of seatNumbers) {
             selectSeat(seatID);
             seatLeft(seatSelected);
             seatCount(seatSelectedCount);
-            discountSectionActivation(seatSelectedCount);
             totalPrice(seatSelectedCount);
+            discountSectionActivation(seatSelectedCount);
         }
     });
 }
@@ -104,6 +104,8 @@ function discountSectionActivation(count) {
         applyButtonElement.removeAttribute("disabled");
     }
 }
+
+
 document.getElementById('phoneNumber').addEventListener('keyup', function () {
     const selectedSeatElement = document.getElementById('totalSelectedSeat');
     const selectedSeatString = selectedSeatElement.innerText;
@@ -121,5 +123,8 @@ document.getElementById('nextBtn').addEventListener('click', function () {
     document.getElementById('phoneNumber').value = "";
     document.getElementById('emailID').value = "";
     document.getElementById('nextBtn').setAttribute('disabled','');
+    document.getElementById('inputCuponCode').setAttribute('disabled','');
+    document.getElementById('applyBtn').setAttribute('disabled','');
+
 })
 
